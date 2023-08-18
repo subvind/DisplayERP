@@ -1,17 +1,47 @@
-<script>
-	import Header from './Header.svelte';
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	import Header from '$lib/Header.svelte';
 	import './styles.css';
+
+	let organization: any;
+	let hostname: any;
+
+	onMount(async() => {
+		hostname = window.location.hostname
+		if (hostname === 'localhost') {
+			hostname = 'store.subvind.com'
+		}
+    const response = await fetch(`https://backend.subvind.com/organizations/hostname/${hostname}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (response.ok) {
+      organization = await response.json();
+    } else {
+      const errorData = await response.json();
+      alert(errorData.error);
+    }
+	})
 </script>
 
 <div class="app">
-	<Header />
+	<Header organization={organization} />
 
 	<main>
 		<slot />
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p style="margin: 0;">
+  		{hostname} © {new Date().getFullYear()}.
+		</p>
+		<p style="margin: 0;">
+			powered by <a href="https://subvind.com">subvind</a>
+		</p>
 	</footer>
 </div>
 
