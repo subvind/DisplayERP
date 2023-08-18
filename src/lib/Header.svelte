@@ -62,7 +62,7 @@
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Menu</a></li>
 
-			<li><a href="#!"><i class="material-icons">home</i>Homepage</a></li>
+			<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
 			<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Store</a></li>
 			<li><a href="/about"><i class="material-icons">local_library</i>About</a></li>
 			<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
@@ -77,8 +77,8 @@
 			
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Extra</a></li>
-			<li><a class="waves-effect" href="#!">Privacy Policy</a></li>
-			<li><a class="waves-effect" href="#!">Terms & Conditions</a></li>
+			<li><a class="waves-effect" href="#">Privacy Policy</a></li>
+			<li><a class="waves-effect" href="#">Terms & Conditions</a></li>
 		</ul>
 		{#if organization}
 			<a href="#" data-target="slide-out" class="brand-logo sidenav-trigger left"><i class="material-icons">menu</i>{organization.displayName}</a>
@@ -90,12 +90,12 @@
 
 			<!-- Dropdown Structure -->
 			<ul id='dropdown1' class='dropdown-content'>
-				<li><a href="#!">one</a></li>
-				<li><a href="#!">two</a></li>
+				<li><a href="#">one</a></li>
+				<li><a href="#">two</a></li>
 				<li class="divider" tabindex="-1"></li>
-				<li><a href="#!">three</a></li>
-				<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-				<li><a href="#!"><i class="material-icons">cloud</i>five somthing</a></li>
+				<li><a href="#">three</a></li>
+				<li><a href="#"><i class="material-icons">view_module</i>four</a></li>
+				<li><a href="#"><i class="material-icons">cloud</i>five somthing</a></li>
 			</ul>
 		</ul>
 	</div>
