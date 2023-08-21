@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 
 	import Header from '$lib/Header.svelte';
+
+	// custom
 	import './styles.css';
 
 	let organization: any;

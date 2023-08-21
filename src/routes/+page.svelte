@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+  import Slideshow from '$lib/Slideshow.svelte';
+  import Categories from '$lib/Categories.svelte'
 
 	let categories: any;
 
@@ -36,6 +36,13 @@
 	<title>Home</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
+
+<br />
+<Slideshow />
+
+{#if categories}
+  <Categories categories={categories} />
+{/if}
 
 {JSON.stringify(categories, null, 2)}
 
