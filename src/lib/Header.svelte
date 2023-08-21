@@ -35,6 +35,10 @@
       setTimeout(() => {
         let elms = document.querySelectorAll('.tabs')
         var instance = M.Tabs.init(elms, {});
+		
+				var elems = document.querySelectorAll('.collapsible');
+		    var instances = M.Collapsible.init(elems, {});
+
       }, 0)
     } else {
       const errorData = await response.json();
@@ -69,11 +73,25 @@
 			<li><div class="divider"></div></li>
 			
 			<li><a class="subheader">Categories</a></li>
-			{#if categories}
-				{#each categories.data as category}
-					<li><a class="waves-effect" href={`/${category.slug}`}>{category.name}</a></li>
-				{/each}
-			{/if}
+			<li class="black-text">
+				<ul class="collapsible">
+					{#if categories}
+						{#each categories.data as category}
+							<li>
+								<div class="collapsible-header">{category.name}</div>
+								<div class="collapsible-body">
+									{#if category.subCategories}
+										{#each category.subCategories as subCategory}
+											<li><a class="waves-effect" href={`/${category.slug}/${subCategory.slug}`}><i class="material-icons">subdirectory_arrow_right</i>{subCategory.name}</a></li>
+										{/each}
+									{/if}
+								</div>
+							</li>
+						{/each}
+					{/if}
+				</ul>
+			</li>
+						
 			
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Extra</a></li>
@@ -144,5 +162,10 @@
     color: rgb(17, 17, 17);
     line-height: 2em;
     text-align: center;
+	}
+
+	.collapsible-header {
+		height: 3.2em;
+		padding: 0 32px;
 	}
 </style>
