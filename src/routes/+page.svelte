@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 
   import Slideshow from '$lib/Slideshow.svelte';
-  import Categories from '$lib/Categories.svelte'
+  import Categories from '$lib/Categories.svelte';
   import LatestProducts from '$lib/LatestProducts.svelte';
 
 	let categories: any;
