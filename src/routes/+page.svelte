@@ -44,7 +44,7 @@
   <Categories categories={categories} />
 {/if}
 
-{JSON.stringify(categories, null, 2)}
+<!-- {JSON.stringify(categories, null, 2)} -->
 
 <style>
 	
