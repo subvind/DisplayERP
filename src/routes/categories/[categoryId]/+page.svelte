@@ -73,8 +73,8 @@
     <SubCategories categories={category.subCategories} />
   {/if}
 
-  {#if organization}
-    <Products organization={organization} />
+  {#if category}
+    <Products category={category} />
   {/if}
   
   <!-- {JSON.stringify(category)} -->

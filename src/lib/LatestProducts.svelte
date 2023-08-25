@@ -1,9 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-  import Slideshow from '$lib/Slideshow.svelte';
-  import Categories from '$lib/Categories.svelte'
-
 	export let organization: any;
   let products: any;
 

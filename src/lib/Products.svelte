@@ -1,10 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-  import Slideshow from '$lib/Slideshow.svelte';
-  import Categories from '$lib/Categories.svelte'
-
-	export let organization: any;
+	export let category: any;
   let products: any;
 
 	onMount(async() => {
@@ -12,7 +9,7 @@
 		if (hostname === 'localhost') {
 			hostname = 'store.subvind.com'
 		}
-    const response = await fetch(`https://backend.subvind.com/products/latestOrgRelated/${organization.id}`, {
+    const response = await fetch(`https://backend.subvind.com/products/categoryRelated/${category.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
