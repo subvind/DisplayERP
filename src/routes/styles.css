@@ -2,12 +2,7 @@ body {
   background: #eee;
 }
 
-nav {
-  height: inherit !important;
-  min-height: 64px; 
-}
-
-nav.breadcrumb {
+nav.breadcrumbs {
   height: inherit !important;
   min-height: 56px; 
 }

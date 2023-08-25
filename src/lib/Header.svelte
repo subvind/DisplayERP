@@ -164,7 +164,7 @@
 	.logo {
 		max-height: 3.2em;
 		width: 3.2em;
-		margin: 0.5em;
+		margin: 0.5em 0.5em 0;
 		border-radius: 10em;
     overflow: hidden;
     display: flex;
