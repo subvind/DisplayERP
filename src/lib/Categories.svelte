@@ -2,7 +2,7 @@
   export let categories: any;
 </script>
 
-<h4>FIND YOUR BAGS</h4>
+<h4>BROWSE BY CATEGORY</h4>
 <!-- {JSON.stringify(categories)} -->
 <div class="row categories">
   {#each categories.data as category}
@@ -15,7 +15,7 @@
           <!-- <span class="card-title"></span> -->
         </div>
         <div class="card-action">
-          <a href="#">{category.name}</a>
+          <a href={`/categories/${category.slug}`}>{category.name}</a>
         </div>
       </div>
     </div>

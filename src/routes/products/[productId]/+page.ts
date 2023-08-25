@@ -1,10 +1,9 @@
 import { error } from '@sveltejs/kit';
 
 export function load({ params }: any) {
-  if (params.categoryId && params.subCategoryId) {
+  if (params.productId) {
     return {
-      categoryId: params.categoryId,
-      subCategoryId: params.subCategoryId,
+      productId: params.productId
     };
   }
 

@@ -68,7 +68,7 @@
 
 			<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
 			<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Store</a></li>
-			<li><a href="/about"><i class="material-icons">local_library</i>About</a></li>
+			<!-- <li><a href="/about"><i class="material-icons">local_library</i>About</a></li> -->
 			<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
 			<li><div class="divider"></div></li>
 			
@@ -82,7 +82,7 @@
 								<div class="collapsible-body">
 									{#if category.subCategories}
 										{#each category.subCategories as subCategory}
-											<li><a class="waves-effect" href={`/${category.slug}/${subCategory.slug}`}><i class="material-icons">subdirectory_arrow_right</i>{subCategory.name}</a></li>
+											<li><a class="waves-effect" href={`/categories/${subCategory.slug}`}><i class="material-icons">subdirectory_arrow_right</i>{subCategory.name}</a></li>
 										{/each}
 									{/if}
 								</div>
