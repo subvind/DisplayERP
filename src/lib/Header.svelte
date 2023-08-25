@@ -63,15 +63,8 @@
 					{organization.description}
 				</div>
 			{/if}
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Menu</a></li>
-
-			<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
-			<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Store</a></li>
-			<!-- <li><a href="/about"><i class="material-icons">local_library</i>About</a></li> -->
-			<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
-			<li><div class="divider"></div></li>
 			
+			<li><div class="divider"></div></li>
 			<li><a class="subheader">Categories</a></li>
 			<li class="black-text">
 				<ul class="collapsible">
@@ -90,8 +83,15 @@
 						{/each}
 					{/if}
 				</ul>
-			</li>
-						
+			</li>			
+			
+			<li><div class="divider"></div></li>
+			<li><a class="subheader">Menu</a></li>
+
+			<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
+			<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Store</a></li>
+			<!-- <li><a href="/about"><i class="material-icons">local_library</i>About</a></li> -->
+			<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
 			
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Extra</a></li>
