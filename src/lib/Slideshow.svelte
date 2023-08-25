@@ -16,7 +16,7 @@
     <div class="card">
       <div class="card-image">
         <div class="banner">
-          <img src="/1.jpg" alt="logo">
+          <img src="/IMG-1255.jpg" alt="logo">
         </div>
       </div>
       <div class="card-action">

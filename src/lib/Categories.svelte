@@ -10,7 +10,7 @@
       <div class="card hoverable">
         <div class="card-image">
           <div class="category">
-            <img src="/logo.jpg" alt="logo">
+            <img src="/IMG-1258.jpg" alt="logo">
           </div>
           <!-- <span class="card-title"></span> -->
         </div>
