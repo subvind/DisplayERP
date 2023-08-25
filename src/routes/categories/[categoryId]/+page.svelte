@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import SubCategories from "$lib/SubCategories.svelte";
+  import Products from "$lib/Products.svelte";
 
   export let data: any;
   let category: any;
@@ -71,20 +72,10 @@
   {#if category}
     <SubCategories categories={category.subCategories} />
   {/if}
-</div>
 
-<div class="container">
-  <h4>BROWSE PRODUCTS</h4>
-  <nav class="grey">
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
-  </nav>
-  {JSON.stringify(category)}
+  {#if organization}
+    <Products organization={organization} />
+  {/if}
+  
+  <!-- {JSON.stringify(category)} -->
 </div>
