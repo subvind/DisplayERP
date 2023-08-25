@@ -114,12 +114,14 @@
 
 			<!-- Dropdown Structure -->
 			<ul id='dropdown1' class='dropdown-content'>
-				<li><a href="#">one</a></li>
-				<li><a href="#">two</a></li>
-				<li class="divider" tabindex="-1"></li>
-				<li><a href="#">three</a></li>
-				<li><a href="#"><i class="material-icons">view_module</i>four</a></li>
-				<li><a href="#"><i class="material-icons">cloud</i>five somthing</a></li>
+				{#if organization}
+					{#if organization.ebayUser}
+						<li><a href={`https://www.ebay.com/usr/${organization.ebayUser}`} target="_blank">ebay.com/usr/{organization.ebayUser}</a></li>
+					{/if}
+					{#if organization.etsyUser}
+						<li><a href={`https://www.etsy.com/usr/${organization.etsyUser}`} target="_blank">etsy.com/usr/{organization.etsyUser}</a></li>
+					{/if}
+				{/if}
 			</ul>
 		</ul>
 	</div>
