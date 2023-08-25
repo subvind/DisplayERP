@@ -3,8 +3,10 @@
 
   import Slideshow from '$lib/Slideshow.svelte';
   import Categories from '$lib/Categories.svelte'
+  import LatestProducts from '$lib/LatestProducts.svelte';
 
 	let categories: any;
+  let organization: any;
 
 	onMount(async() => {
 		let hostname = window.location.hostname
@@ -29,6 +31,20 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
+
+    const responseOrg = await fetch(`https://backend.subvind.com/organizations/hostname/${hostname}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (responseOrg.ok) {
+      organization = await responseOrg.json();
+    } else {
+      const errorData = await responseOrg.json();
+      alert(errorData.error);
+    }
 	})
 </script>
 
@@ -38,11 +54,17 @@
 </svelte:head>
 
 <br />
-<Slideshow />
-
-{#if categories}
-  <Categories categories={categories} />
-{/if}
+<div class="container">
+  <Slideshow />
+  
+  {#if categories}
+    <Categories categories={categories} />
+  {/if}
+  
+  {#if organization}
+    <LatestProducts organization={organization} />
+  {/if}
+</div>
 
 <!-- {JSON.stringify(categories, null, 2)} -->
 

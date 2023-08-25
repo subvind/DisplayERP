@@ -104,7 +104,11 @@
 
 		<ul id="nav-mobile" class="right">
 			<!-- Dropdown Trigger -->
-			<li><a href="#"><i class="dropdown-trigger material-icons" data-target='dropdown1'>more_vert</i></a></li>
+			<li>
+				<div class="logo">
+					<img src="/logo.jpg" alt="logo" class="dropdown-trigger" data-target='dropdown1'>
+				</div>
+			</li>
 
 			<!-- Dropdown Structure -->
 			<ul id='dropdown1' class='dropdown-content'>
@@ -153,6 +157,23 @@
 
 
 <style>
+	.logo {
+		max-height: 3.2em;
+		width: 3.2em;
+		margin: 0.5em;
+		border-radius: 10em;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	}
+
+	.logo img {
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+	}
+
 	nav .sidenav-trigger {
 		display: initial !important;
 	}
