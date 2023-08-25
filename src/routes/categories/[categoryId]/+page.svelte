@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import SubCategories from "$lib/SubCategories.svelte";
+
   export let data: any;
   let category: any;
   let organization: any;
@@ -65,10 +67,14 @@
   </div>
 </nav>
 
-<br />
-<br />
+<div class="container">
+  {#if category}
+    <SubCategories categories={category.subCategories} />
+  {/if}
+</div>
 
 <div class="container">
+  <h4>BROWSE PRODUCTS</h4>
   <nav class="grey">
     <div class="nav-wrapper">
       <form>

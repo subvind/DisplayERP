@@ -58,7 +58,6 @@
     </div>
   </div>
 </nav>
-<br />
 
 <div class="container">
   {#if categories}
