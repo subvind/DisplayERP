@@ -39,7 +39,7 @@
   <!-- {JSON.stringify(categories)} -->
   <div class="row categories">
     {#each products.data as product}
-      <div class="col s6 m4">
+      <div class="col s12 m6 l3">
         <div class="card hoverable">
           <div class="card-image">
             <div class="category">
@@ -66,7 +66,7 @@
   }
 
   .category {
-    max-height: 200px;
+    /* max-height: 200px; */
     overflow: hidden;
     display: flex;
     justify-content: center; /* Horizontally center the image */

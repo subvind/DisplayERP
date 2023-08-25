@@ -32,7 +32,7 @@
   }
 
   .category {
-    max-height: 200px;
+    /* max-height: 200px; */
     overflow: hidden;
     display: flex;
     justify-content: center; /* Horizontally center the image */
