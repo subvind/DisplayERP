@@ -54,6 +54,10 @@
 		min-height: 100vh;
 	}
 	
+	main {
+		overflow: hidden;
+	}
+	
 	/* main {
 		flex: 1;
 		display: flex;

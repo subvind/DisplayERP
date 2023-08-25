@@ -48,84 +48,84 @@
 </script>
 
 <header>
-<nav>
-	<div class="nav-wrapper">
-		<ul id="slide-out" class="sidenav">
-			<nav>
-				<div class="nav-wrapper">
-					{#if organization}
-						<a href="/" class="brand-logo" style="width: 100%; text-align: center;">{organization.shortName || 'STOREFRONT'}</a>
-					{/if}
-				</div>
-			</nav>
+	<nav>
+		<div class="nav-wrapper">
+			<ul id="slide-out" class="sidenav">
+				<nav style="max-height: 64px;">
+					<div class="nav-wrapper">
+						{#if organization}
+							<a href="/" class="brand-logo" style="width: 100%; text-align: center;">{organization.shortName || 'STOREFRONT'}</a>
+						{/if}
+					</div>
+				</nav>
+				{#if organization}
+					<div class="describe">
+						{organization.description}
+					</div>
+				{/if}
+				
+				<li><div class="divider"></div></li>
+				<li><a class="subheader">Categories</a></li>
+				<li class="black-text">
+					<ul class="collapsible">
+						{#if categories}
+							{#each categories.data as category}
+								{#if !category.parentCategory}
+									<li>
+										<div class="collapsible-header">{category.name}</div>
+										<div class="collapsible-body">
+											{#if category.subCategories}
+												{#each category.subCategories as subCategory}
+													<li><a class="waves-effect" href={`/categories/${subCategory.slug}`} target="_self"><i class="material-icons">subdirectory_arrow_right</i>{subCategory.name}</a></li>
+												{/each}
+											{/if}
+										</div>
+									</li>
+								{/if}
+							{/each}
+						{/if}
+					</ul>
+				</li>			
+				
+				<li><div class="divider"></div></li>
+				<li><a class="subheader">Menu</a></li>
+
+				<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
+				<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Store</a></li>
+				<!-- <li><a href="/about"><i class="material-icons">local_library</i>About</a></li> -->
+				<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
+				
+				<li><div class="divider"></div></li>
+				<li><a class="subheader">Extra</a></li>
+				<li><a class="waves-effect" href="#">Privacy Policy</a></li>
+				<li><a class="waves-effect" href="#">Terms & Conditions</a></li>
+			</ul>
 			{#if organization}
-				<div class="describe">
-					{organization.description}
-				</div>
+				<a href="#" data-target="slide-out" class="brand-logo sidenav-trigger left"><i class="material-icons">menu</i>{organization.displayName}</a>
 			{/if}
-			
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Categories</a></li>
-			<li class="black-text">
-				<ul class="collapsible">
-					{#if categories}
-						{#each categories.data as category}
-    					{#if !category.parentCategory}
-								<li>
-									<div class="collapsible-header">{category.name}</div>
-									<div class="collapsible-body">
-										{#if category.subCategories}
-											{#each category.subCategories as subCategory}
-												<li><a class="waves-effect" href={`/categories/${subCategory.slug}`} target="_self"><i class="material-icons">subdirectory_arrow_right</i>{subCategory.name}</a></li>
-											{/each}
-										{/if}
-									</div>
-								</li>
-							{/if}
-						{/each}
+
+			<ul id="nav-mobile" class="right">
+				<!-- Dropdown Trigger -->
+				<li>
+					<div class="logo">
+						<img src="/logo.jpg" alt="logo" class="dropdown-trigger" data-target='dropdown1'>
+					</div>
+				</li>
+
+				<!-- Dropdown Structure -->
+				<ul id='dropdown1' class='dropdown-content'>
+					{#if organization}
+						{#if organization.ebayUser}
+							<li><a href={`https://www.ebay.com/usr/${organization.ebayUser}`} target="_blank">ebay.com/usr/{organization.ebayUser}</a></li>
+						{/if}
+						{#if organization.etsyUser}
+							<li><a href={`https://www.etsy.com/usr/${organization.etsyUser}`} target="_blank">etsy.com/usr/{organization.etsyUser}</a></li>
+						{/if}
 					{/if}
 				</ul>
-			</li>			
-			
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Menu</a></li>
-
-			<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
-			<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Store</a></li>
-			<!-- <li><a href="/about"><i class="material-icons">local_library</i>About</a></li> -->
-			<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
-			
-			<li><div class="divider"></div></li>
-			<li><a class="subheader">Extra</a></li>
-			<li><a class="waves-effect" href="#">Privacy Policy</a></li>
-			<li><a class="waves-effect" href="#">Terms & Conditions</a></li>
-		</ul>
-		{#if organization}
-			<a href="#" data-target="slide-out" class="brand-logo sidenav-trigger left"><i class="material-icons">menu</i>{organization.displayName}</a>
-		{/if}
-
-		<ul id="nav-mobile" class="right">
-			<!-- Dropdown Trigger -->
-			<li>
-				<div class="logo">
-					<img src="/logo.jpg" alt="logo" class="dropdown-trigger" data-target='dropdown1'>
-				</div>
-			</li>
-
-			<!-- Dropdown Structure -->
-			<ul id='dropdown1' class='dropdown-content'>
-				{#if organization}
-					{#if organization.ebayUser}
-						<li><a href={`https://www.ebay.com/usr/${organization.ebayUser}`} target="_blank">ebay.com/usr/{organization.ebayUser}</a></li>
-					{/if}
-					{#if organization.etsyUser}
-						<li><a href={`https://www.etsy.com/usr/${organization.etsyUser}`} target="_blank">etsy.com/usr/{organization.etsyUser}</a></li>
-					{/if}
-				{/if}
 			</ul>
-		</ul>
-	</div>
-</nav>
+		</div>
+	</nav>
 </header>
 
 

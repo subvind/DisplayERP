@@ -1,3 +1,13 @@
 body {
   background: #eee;
 }
+
+nav {
+  height: inherit !important;
+  min-height: 64px; 
+}
+
+nav.breadcrumb {
+  height: inherit !important;
+  min-height: 56px; 
+}

@@ -46,7 +46,7 @@
   })
 </script>
 
-<nav class="black">
+<nav class="breadcrumbs black">
   <div class="container">
     <div class="nav-wrapper">
       <div class="col s12">
