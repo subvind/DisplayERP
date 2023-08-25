@@ -6,19 +6,21 @@
 <!-- {JSON.stringify(categories)} -->
 <div class="row categories">
   {#each categories.data as category}
-    <div class="col s6 m4">
-      <div class="card hoverable">
-        <div class="card-image">
-          <div class="category">
-            <img src="/IMG-1258.jpg" alt="logo">
+    {#if !category.parentCategory}
+      <div class="col s6 m4">
+        <div class="card hoverable">
+          <div class="card-image">
+            <div class="category">
+              <img src="/IMG-1258.jpg" alt="logo">
+            </div>
+            <!-- <span class="card-title"></span> -->
           </div>
-          <!-- <span class="card-title"></span> -->
-        </div>
-        <div class="card-action">
-          <a href={`/categories/${category.slug}`}>{category.name}</a>
+          <div class="card-action">
+            <a href={`/categories/${category.slug}`}>{category.name}</a>
+          </div>
         </div>
       </div>
-    </div>
+    {/if}
   {/each}
 </div>
 

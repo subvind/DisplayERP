@@ -70,16 +70,18 @@
 				<ul class="collapsible">
 					{#if categories}
 						{#each categories.data as category}
-							<li>
-								<div class="collapsible-header">{category.name}</div>
-								<div class="collapsible-body">
-									{#if category.subCategories}
-										{#each category.subCategories as subCategory}
-											<li><a class="waves-effect" href={`/categories/${subCategory.slug}`}><i class="material-icons">subdirectory_arrow_right</i>{subCategory.name}</a></li>
-										{/each}
-									{/if}
-								</div>
-							</li>
+    					{#if !category.parentCategory}
+								<li>
+									<div class="collapsible-header">{category.name}</div>
+									<div class="collapsible-body">
+										{#if category.subCategories}
+											{#each category.subCategories as subCategory}
+												<li><a class="waves-effect" href={`/categories/${subCategory.slug}`} target="_self"><i class="material-icons">subdirectory_arrow_right</i>{subCategory.name}</a></li>
+											{/each}
+										{/if}
+									</div>
+								</li>
+							{/if}
 						{/each}
 					{/if}
 				</ul>
