@@ -28,7 +28,7 @@
       alert(errorData.error);
     }
 
-    const response = await fetch(`https://backend.subvind.com/categories/slug/${data.categoryId}`, {
+    const response = await fetch(`https://backend.subvind.com/categories/slug/${data.categoryId}/${organization.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
