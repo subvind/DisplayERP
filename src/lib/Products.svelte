@@ -3,24 +3,24 @@
 
 	export let category: any;
   let limit: number = 2;
-  let search: string;
+  let search: string = '';
   let products: any;
   let totalPages: number;
-
   let currentPage = 1;
 
   function goToPage(pageNumber: number) {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       currentPage = pageNumber;
     }
+    getProducts()
   }
 
-	onMount(async() => {
-		let hostname = window.location.hostname
-		if (hostname === 'localhost') {
-			hostname = 'store.subvind.com'
-		}
-    const response = await fetch(`https://backend.subvind.com/products/categoryRelated/${category.id}`, {
+  async function getProducts () {
+    let searchParams = ''
+    if (search !== '') {
+      searchParams = `&search=${search}`
+    }
+    const response = await fetch(`https://backend.subvind.com/products/categoryRelated/${category.id}?limit=${limit}&page=${currentPage}${searchParams}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -39,6 +39,15 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
+  }
+
+	onMount(async() => {
+		let hostname = window.location.hostname
+		if (hostname === 'localhost') {
+			hostname = 'store.subvind.com'
+		}
+
+    getProducts()
 
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {});
@@ -62,7 +71,7 @@
   <br />
   <div class="row">
     <div class="col s6 m6">
-      1-15 of {products.total} results.
+      1-{limit} of {products.total} results.
     </div>
     <div class="col s6 m6">
       <select class="browser-default">
