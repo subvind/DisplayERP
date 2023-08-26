@@ -36,14 +36,19 @@
   <!-- {JSON.stringify(categories)} -->
   <div class="row categories">
     {#each products.data as product}
-      <div class="col s12 m6 l3">
+      <div class="col s12 m6 l4">
         <div class="card hoverable">
           <div class="card-image">
             <div class="category">
               <img src="/IMG-1258.jpg" alt="logo">
             </div>
-            <!-- <span class="card-title"></span> -->
+            <span class="card-title black-text">$15</span>
           </div>
+          {#if product.description}
+            <div class="card-content">
+              <p>{product.description}</p>
+            </div>
+          {/if}
           <div class="card-action">
             <a href={`/products/${product.stockKeepingUnit}`}>{product.name}</a>
           </div>
