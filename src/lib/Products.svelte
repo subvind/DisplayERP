@@ -2,7 +2,18 @@
 	import { onMount } from 'svelte';
 
 	export let category: any;
+  let limit: number = 2;
+  let search: string;
   let products: any;
+  let totalPages: number;
+
+  let currentPage = 1;
+
+  function goToPage(pageNumber: number) {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      currentPage = pageNumber;
+    }
+  }
 
 	onMount(async() => {
 		let hostname = window.location.hostname
@@ -18,6 +29,7 @@
 
     if (response.ok) {
       products = await response.json();
+      totalPages = Math.ceil(products.total / limit);
 
       setTimeout(() => {
         let elms = document.querySelectorAll('.tabs')
@@ -40,7 +52,7 @@
     <div class="nav-wrapper">
       <form>
         <div class="input-field">
-          <input id="search" type="search" required>
+          <input id="search" type="search" required bind:value={search}>
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div>
@@ -48,7 +60,6 @@
     </div>
   </nav>
   <br />
-
   <div class="row">
     <div class="col s6 m6">
       1-15 of {products.total} results.
@@ -63,41 +74,67 @@
     </div>
   </div>
   <!-- {JSON.stringify(categories)} -->
-  <div class="row categories">
-    {#each products.data as product}
-      <div class="col s12 m6 l4">
-        <div class="card hoverable">
-          <div class="card-image">
-            <div class="category">
-              <img src="/IMG-1258.jpg" alt="logo">
+  {#if products.data.length}
+    <div class="row categories">
+      {#each products.data as product}
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image">
+              <div class="category">
+                <img src="/IMG-1258.jpg" alt="logo">
+              </div>
+              <span class="card-title black-text">$15</span>
             </div>
-            <span class="card-title black-text">$15</span>
-          </div>
-          {#if product.description}
-            <div class="card-content">
-              <p>{product.description}</p>
+            {#if product.description}
+              <div class="card-content">
+                <p>{product.description}</p>
+              </div>
+            {/if}
+            <div class="card-action">
+              <a href={`/products/${product.stockKeepingUnit}`}>{product.name}</a>
             </div>
-          {/if}
-          <div class="card-action">
-            <a href={`/products/${product.stockKeepingUnit}`}>{product.name}</a>
           </div>
         </div>
+      {/each}
+    </div>
+    <div class="pagination">
+      <li class="disabled">
+        <button class="btn-flat" on:click={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
+          <i class="material-icons">chevron_left</i>
+        </button>
+      </li>
+      {#each Array.from({ length: totalPages }, (_, i) => i + 1) as page}
+        <li>
+          <button 
+            class="btn-flat waves-effect"
+            class:active-page-number={currentPage === page}
+            on:click={() => goToPage(page)}>
+            {page}
+          </button>
+        </li>
+      {/each}
+      <li>
+        <button class="btn-flat" on:click={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </li>
+    </div>
+  {:else}
+    <div class="card">
+      <div class="card-content">
+        <p>There are no results to show.</p>
       </div>
-    {/each}
-  </div>
-  <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-  </ul>
+    </div>
+  {/if}
   <br />
 {/if}
 
 <style>
+  .active-page-number {
+    background: #000;
+    color: #fff;
+  }
+
   .categories {
     width: 100%;
   }
