@@ -27,6 +27,9 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
+
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
 	})
 </script>
 
@@ -45,6 +48,20 @@
     </div>
   </nav>
   <br />
+
+  <div class="row">
+    <div class="col s6 m6">
+      1-15 of {products.total} results.
+    </div>
+    <div class="col s6 m6">
+      <select class="browser-default">
+        <option value="1" selected>Latest Products</option>
+        <option value="2">Price (Low to High)</option>
+        <option value="3">Price (High to Low)</option>
+        <option value="4">Archive</option>
+      </select>
+    </div>
+  </div>
   <!-- {JSON.stringify(categories)} -->
   <div class="row categories">
     {#each products.data as product}
@@ -54,8 +71,13 @@
             <div class="category">
               <img src="/IMG-1258.jpg" alt="logo">
             </div>
-            <!-- <span class="card-title"></span> -->
+            <span class="card-title black-text">$15</span>
           </div>
+          {#if product.description}
+            <div class="card-content">
+              <p>{product.description}</p>
+            </div>
+          {/if}
           <div class="card-action">
             <a href={`/products/${product.stockKeepingUnit}`}>{product.name}</a>
           </div>
