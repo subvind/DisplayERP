@@ -29,10 +29,6 @@
     width: 100%;
   }
 
-  .card-action a {
-    color: #000 !important;
-  }
-
   .category {
     /* max-height: 200px; */
     overflow: hidden;

@@ -78,7 +78,7 @@
     text-align: center;
   }
   .card-action a {
-    color: #000 !important;
+    /* color: #000 !important; */
     margin-right: 0 !important;
   }
 </style>
