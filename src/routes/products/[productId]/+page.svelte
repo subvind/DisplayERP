@@ -1,11 +1,34 @@
 <script lang="ts">
-    import Categories from "$lib/Categories.svelte";
   import { onMount } from "svelte";
+  
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
 
   export let data: any;
   let organization: any;
   let product: any;
-
+  let galleryID: string = 'product_images';
+  let images = [
+    {
+      largeURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-2500.jpg',
+      thumbnailURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-200.jpg',
+      width: 1875,
+      height: 2500,
+    },
+    {
+      largeURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg',
+      thumbnailURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg',
+      width: 1669,
+      height: 2500,
+    },
+    {
+      largeURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-2500.jpg',
+      thumbnailURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-200.jpg',
+      width: 2500,
+      height: 1666,
+    },
+  ]
+  
 	onMount(async() => {
 		let hostname = window.location.hostname
 		if (hostname === 'localhost') {
@@ -39,6 +62,13 @@
       const errorData = await responseProduct.json();
       alert(errorData.error);
     }
+
+    let lightbox = new PhotoSwipeLightbox({
+      gallery: '#' + galleryID,
+      children: 'a',
+      pswpModule: () => import('photoswipe'),
+    });
+    lightbox.init();
   })
 
 </script>
@@ -87,6 +117,20 @@
       {/if}
     </div>
     <div class="col s12 m6 l8">
+
+      <div class="pswp-gallery" id={galleryID}>
+        {#each images as image}
+          <a
+            href={image.largeURL}
+            data-pswp-width={image.width}
+            data-pswp-height={image.height}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={image.thumbnailURL} alt="" />
+          </a>
+        {/each}
+      </div>
       {JSON.stringify(product)}
     </div>
   </div>
