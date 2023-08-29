@@ -110,11 +110,6 @@
             <div class="category">
               <img src="/IMG-1258.jpg" alt="logo">
             </div>
-            {#if product.isArchive === false}
-              <span class="card-title black-text">{formatter.format(product.price / 100)}</span>
-            {:else}
-              <span class="card-title black-text">NFS</span>
-            {/if}
           </div>
           {#if product.description}
             <div class="card-content">
@@ -125,6 +120,19 @@
             <a href={`/products/${product.stockKeepingUnit}`}>{product.name}</a>
           </div>
         </div>
+        {#if product.isArchive === false}
+          <div class="card hoverable">
+            <div class="card-content">
+              <span class="card-title">
+                Price: <span class="right">{formatter.format(product.price / 100)}</span><br />
+                Shipping: <span class="right">{formatter.format(product.shippingCost / 100)}</span><br />
+                <hr>
+                Totoal: <span class="right">{formatter.format((product.price + product.shippingCost) / 100)}</span>
+              </span>
+              <a href="#" class="btn" style="width: 100%;">for sale at ebay</a>
+            </div>
+          </div>
+        {/if}
       {/if}
     </div>
     <div class="col s12 m6 l8">
@@ -142,7 +150,9 @@
           </a>
         {/each}
       </div>
-      {JSON.stringify(product)}
+      {#if product}
+        <p>{product.detail || ''}</p>
+      {/if}
     </div>
   </div>
 </div>
