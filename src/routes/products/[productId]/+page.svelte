@@ -27,9 +27,16 @@
       width: 2500,
       height: 1666,
     },
-  ]
+  ];
+  let formatter: any;
   
 	onMount(async() => {
+    formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD', // Change this to the desired currency code
+      minimumFractionDigits: 2,
+    });
+
 		let hostname = window.location.hostname
 		if (hostname === 'localhost') {
 			hostname = 'store.subvind.com'
@@ -103,7 +110,11 @@
             <div class="category">
               <img src="/IMG-1258.jpg" alt="logo">
             </div>
-            <span class="card-title black-text">$15</span>
+            {#if product.isArchive === false}
+              <span class="card-title black-text">{formatter.format(product.price / 100)}</span>
+            {:else}
+              <span class="card-title black-text">NFS</span>
+            {/if}
           </div>
           {#if product.description}
             <div class="card-content">

@@ -2,11 +2,13 @@
 	import { onMount } from 'svelte';
 
 	export let category: any;
-  let limit: number = 2;
+  let limit: number = 15;
   let search: string = '';
   let products: any;
   let totalPages: number;
   let currentPage = 1;
+  let type: string = 'LatestProducts'
+  let formatter: any;
 
   function goToPage(pageNumber: number) {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
@@ -20,7 +22,8 @@
     if (search !== '') {
       searchParams = `&search=${search}`
     }
-    const response = await fetch(`https://backend.subvind.com/products/categoryRelated/${category.id}?limit=${limit}&page=${currentPage}${searchParams}`, {
+    let typeParams = `&type=${type}`
+    const response = await fetch(`https://backend.subvind.com/products/categoryRelated/${category.id}?limit=${limit}&page=${currentPage}${searchParams}${typeParams}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -42,6 +45,12 @@
   }
 
 	onMount(async() => {
+    formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD', // Change this to the desired currency code
+      minimumFractionDigits: 2,
+    });
+
 		let hostname = window.location.hostname
 		if (hostname === 'localhost') {
 			hostname = 'store.subvind.com'
@@ -61,7 +70,7 @@
     <div class="nav-wrapper">
       <form on:submit={() => getProducts()}>
         <div class="input-field">
-          <input id="search" type="search" required bind:value={search}>
+          <input id="search" type="search" bind:value={search}>
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div>
@@ -74,11 +83,11 @@
       1-{limit} of {products.total} results.
     </div>
     <div class="col s6 m6">
-      <select class="browser-default">
-        <option value="1" selected>Latest Products</option>
-        <option value="2">Price (Low to High)</option>
-        <option value="3">Price (High to Low)</option>
-        <option value="4">Archive</option>
+      <select class="browser-default" bind:value={type} on:change={() => getProducts()}>
+        <option value="LatestProducts">Latest Products</option>
+        <option value="PriceLowToHigh">Price (Low to High)</option>
+        <option value="PriceHighToLow">Price (High to Low)</option>
+        <option value="Archive">Archive</option>
       </select>
     </div>
   </div>
@@ -92,7 +101,11 @@
               <div class="category">
                 <img src="/IMG-1258.jpg" alt="logo">
               </div>
-              <span class="card-title black-text">$15</span>
+              {#if product.isArchive === false}
+                <span class="card-title black-text">{formatter.format(product.price / 100)}</span>
+              {:else}
+                <span class="card-title black-text">NFS</span>
+              {/if}
             </div>
             {#if product.description}
               <div class="card-content">
