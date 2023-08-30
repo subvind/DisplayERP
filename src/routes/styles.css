@@ -1,4 +1,13 @@
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/static/fonts/helvetica.woff2') format('woff2'),
+       url('/static/fonts/helvetica.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
+  font-family: 'Helvetica', sans-serif;
   background: #eee;
 }
 
