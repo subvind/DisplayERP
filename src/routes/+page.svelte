@@ -51,8 +51,8 @@
 <svelte:head>
   {#if organization}
     <title>{organization.displayName} - {organization.description}</title> 
+    <meta name="description" content={organization.detail} />
   {/if}
-	<meta name="description" content={organization.detail} />
 </svelte:head>
 
 <br />
