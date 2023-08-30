@@ -46,6 +46,12 @@
   })
 </script>
 
+<svelte:head>
+  {#if organization}
+  <title>Categories - {organization.displayName}</title>
+  {/if}
+</svelte:head>
+
 <nav class="breadcrumbs black">
   <div class="container">
     <div class="nav-wrapper">

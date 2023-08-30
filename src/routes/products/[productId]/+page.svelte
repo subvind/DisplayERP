@@ -77,8 +77,14 @@
     });
     lightbox.init();
   })
-
 </script>
+
+<svelte:head>
+  {#if product && organization}
+    <title>{product.name} - {product.category.name} - {organization.displayName}</title> 
+    <meta name="description" content={product.description} />
+  {/if}
+</svelte:head>
 
 <nav class="breadcrumbs black">
   <div class="container">

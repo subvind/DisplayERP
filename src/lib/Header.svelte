@@ -1,10 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
-
 	export let organization: any;
 
 	let categories: any;
@@ -48,10 +44,10 @@
 </script>
 
 <header>
-	<nav>
+	<nav class="grey darken-3">
 		<div class="nav-wrapper">
 			<ul id="slide-out" class="sidenav">
-				<nav style="max-height: 64px;">
+				<nav class="grey darken-3" style="max-height: 64px;">
 					<div class="nav-wrapper">
 						{#if organization}
 							<a href="/" class="brand-logo" style="width: 100%; text-align: center;">{organization.shortName || 'STOREFRONT'}</a>

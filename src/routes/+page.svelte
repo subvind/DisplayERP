@@ -49,8 +49,10 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+  {#if organization}
+    <title>{organization.displayName} - {organization.description}</title> 
+  {/if}
+	<meta name="description" content={organization.detail} />
 </svelte:head>
 
 <br />

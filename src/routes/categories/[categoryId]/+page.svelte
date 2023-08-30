@@ -49,6 +49,13 @@
 	})
 </script>
 
+<svelte:head>
+  {#if category && organization}
+    <title>{category.name} - {organization.displayName}</title> 
+    <meta name="description" content={category.description} />
+  {/if}
+</svelte:head>
+
 <nav class="breadcrumbs black">
   <div class="container">
     <div class="nav-wrapper">
