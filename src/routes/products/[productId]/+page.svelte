@@ -135,7 +135,7 @@
                 <hr>
                 Totoal: <span class="right">{formatter.format((product.price + product.shippingCost) / 100)}</span>
               </span>
-              <a href="#" class="btn" style="width: 100%;">for sale at ebay</a>
+              <a href="#" class="btn grey darken-2" style="width: 100%;">for sale at ebay</a>
             </div>
           </div>
         {/if}
