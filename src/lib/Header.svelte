@@ -87,7 +87,7 @@
 				<li><a class="subheader">Menu</a></li>
 
 				<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
-				<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Store</a></li>
+				<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Shop</a></li>
 				<!-- <li><a href="/about"><i class="material-icons">local_library</i>About</a></li> -->
 				<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
 				
@@ -104,7 +104,13 @@
 				<!-- Dropdown Trigger -->
 				<li>
 					<div class="logo">
-						<img src="/logo.jpg" alt="logo" class="dropdown-trigger" data-target='dropdown1'>
+						{#if organization}
+							{#if organization.orgPhoto}
+								<img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${organization.orgPhoto.bucket.name}/${organization.orgPhoto.filename}`} alt="logo" class="dropdown-trigger" data-target='dropdown1'>
+							{:else}
+								<img src="logo.jpg" alt="logo" class="dropdown-trigger" data-target='dropdown1'>
+							{/if}
+						{/if}
 					</div>
 				</li>
 
