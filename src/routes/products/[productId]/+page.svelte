@@ -53,8 +53,8 @@
           images.push({
             largeURL: `https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.bucket.name}/${image.filename}`,
             thumbnailURL: `https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.bucket.name}/${image.filename}`,
-            width: 500,
-            height: 500,
+            width: image.width,
+            height: image.height,
           })
         })
       }
