@@ -120,7 +120,7 @@
 							<li><a href={`https://www.ebay.com/usr/${organization.ebayUser}`} target="_blank">ebay.com/usr/{organization.ebayUser}</a></li>
 						{/if}
 						{#if organization.etsyShop}
-							<li><a href={`https://www.etsy.com/shop/${organization.etsyShop}`} target="_blank">etsy.com/usr/{organization.etsyShop}</a></li>
+							<li><a href={`https://www.etsy.com/shop/${organization.etsyShop}`} target="_blank">etsy.com/shop/{organization.etsyShop}</a></li>
 						{/if}
 					{/if}
 				</ul>
