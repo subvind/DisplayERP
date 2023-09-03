@@ -8,26 +8,7 @@
   let organization: any;
   let product: any;
   let galleryID: string = 'product_images';
-  let images = [
-    {
-      largeURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-2500.jpg',
-      thumbnailURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-200.jpg',
-      width: 1875,
-      height: 2500,
-    },
-    {
-      largeURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg',
-      thumbnailURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg',
-      width: 1669,
-      height: 2500,
-    },
-    {
-      largeURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-2500.jpg',
-      thumbnailURL: 'https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-200.jpg',
-      width: 2500,
-      height: 1666,
-    },
-  ];
+  let images: any = null;
   let formatter: any;
   
 	onMount(async() => {
@@ -65,17 +46,32 @@
 
     if (responseProduct.ok) {
       product = await responseProduct.json();
+      console.log('product', product)
+      if (product.bucket) {
+        images = [];
+        product.bucket.files.forEach((image: any) => {
+          images.push({
+            largeURL: `https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.bucket.name}/${image.filename}`,
+            thumbnailURL: `https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.bucket.name}/${image.filename}`,
+            width: 500,
+            height: 500,
+          })
+        })
+      }
+      console.log('images', images)
     } else {
       const errorData = await responseProduct.json();
       alert(errorData.error);
     }
 
-    let lightbox = new PhotoSwipeLightbox({
-      gallery: '#' + galleryID,
-      children: 'a',
-      pswpModule: () => import('photoswipe'),
-    });
-    lightbox.init();
+    setTimeout(() => {
+      let lightbox = new PhotoSwipeLightbox({
+        gallery: '#' + galleryID,
+        children: 'a',
+        pswpModule: () => import('photoswipe'),
+      });
+      lightbox.init();
+    }, 0)
   })
 </script>
 
@@ -114,7 +110,11 @@
         <div class="card hoverable">
           <div class="card-image">
             <div class="category">
-              <img src="/IMG-1258.jpg" alt="logo">
+              {#if product && product.coverPhoto}
+                <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.coverPhoto.bucket.name}/${product.coverPhoto.filename}`} alt="">
+              {:else}
+                <img src="/IMG-1258.jpg" alt="">
+              {/if}
             </div>
           </div>
           {#if product.description}
@@ -142,20 +142,21 @@
       {/if}
     </div>
     <div class="col s12 m6 l8">
-
-      <div class="pswp-gallery" id={galleryID}>
-        {#each images as image}
-          <a
-            href={image.largeURL}
-            data-pswp-width={image.width}
-            data-pswp-height={image.height}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={image.thumbnailURL} alt="" />
-          </a>
-        {/each}
-      </div>
+      {#if images}
+        <div class="pswp-gallery" id={galleryID}>
+          {#each images as image}
+            <a
+              href={image.largeURL}
+              data-pswp-width={image.width}
+              data-pswp-height={image.height}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={image.thumbnailURL} alt="" style="max-width: 100px;" />
+            </a>
+          {/each}
+        </div>
+      {/if}
       {#if product}
         <p>{product.detail || ''}</p>
       {/if}
