@@ -119,8 +119,8 @@
 						{#if organization.ebayUser}
 							<li><a href={`https://www.ebay.com/usr/${organization.ebayUser}`} target="_blank">ebay.com/usr/{organization.ebayUser}</a></li>
 						{/if}
-						{#if organization.etsyUser}
-							<li><a href={`https://www.etsy.com/usr/${organization.etsyUser}`} target="_blank">etsy.com/usr/{organization.etsyUser}</a></li>
+						{#if organization.etsyShop}
+							<li><a href={`https://www.etsy.com/shop/${organization.etsyShop}`} target="_blank">etsy.com/usr/{organization.etsyShop}</a></li>
 						{/if}
 					{/if}
 				</ul>
