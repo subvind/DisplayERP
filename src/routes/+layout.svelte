@@ -31,7 +31,9 @@
 </script>
 
 <div class="app">
-	<Header organization={organization} />
+	{#if organization}
+		<Header organization={organization} />
+	{/if}
 
 	<main>
 		<slot />

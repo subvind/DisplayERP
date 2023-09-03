@@ -9,11 +9,6 @@
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {});
 
-		var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, {
-			constrainWidth: false,
-		});
-
 		let hostname = window.location.hostname
 		if (hostname === 'localhost') {
 			hostname = 'store.subvind.com'
@@ -27,19 +22,23 @@
 
     if (response.ok) {
       categories = await response.json();
-
-      setTimeout(() => {
-        let elms = document.querySelectorAll('.tabs')
-        var instance = M.Tabs.init(elms, {});
-		
-				var elems = document.querySelectorAll('.collapsible');
-		    var instances = M.Collapsible.init(elems, {});
-
-      }, 0)
     } else {
-      const errorData = await response.json();
+			const errorData = await response.json();
       alert(errorData.error);
     }
+
+		setTimeout(() => {
+			let elms = document.querySelectorAll('.tabs')
+			var instance = M.Tabs.init(elms, {});
+	
+			var elems = document.querySelectorAll('.collapsible');
+			var instances = M.Collapsible.init(elems, {});
+
+			var elems = document.querySelectorAll('.dropdown-trigger');
+			var instances = M.Dropdown.init(elems, {
+				constrainWidth: false,
+			});
+		}, 0)
 	})
 </script>
 

@@ -10,8 +10,8 @@
       <div class="col s6 m3">
         <div class="card hoverable">
           <div class="card-image">
-            <div class="category">
-              <img src="/IMG-1258.jpg" alt="logo">
+            <div class="photo">
+              <img src="/IMG-1258.jpg" alt="category">
             </div>
             <!-- <span class="card-title"></span> -->
           </div>
@@ -29,7 +29,7 @@
     width: 100%;
   }
 
-  .category {
+  .photo {
     /* max-height: 200px; */
     overflow: hidden;
     display: flex;
@@ -37,7 +37,7 @@
     align-items: center; /* Vertically center the image */
   }
 
-  .category img {
+  .photo img {
     width: auto;
     max-width: 100%;
     object-fit: contain; /* This ensures the image maintains its aspect ratio and fits within the container */

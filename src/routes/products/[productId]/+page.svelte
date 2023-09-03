@@ -91,7 +91,7 @@
           <a href="/categories" class="breadcrumb">{organization.categoriesName}</a>
         {/if}
         {#if product && product.category}
-          <a href={`/categories/${product.category.slug}`} target="_self" class="breadcrumb">{product.category.name}</a>
+          <a href={`/categories/${product.category.slug}`} class="breadcrumb">{product.category.name}</a>
         {/if}
         {#if product}
           <a href={`/products/${product.stockKeepingUnit}`} target="_self" class="breadcrumb">{product.name}</a>

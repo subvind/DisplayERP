@@ -77,11 +77,11 @@
 
 <div class="container">
   {#if category}
-    <SubCategories categories={category.subCategories} />
+    <SubCategories categories={category.subCategories} organization={organization} />
   {/if}
 
   {#if category}
-    <Products category={category} />
+    <Products category={category} organization={organization} />
   {/if}
   
   <!-- {JSON.stringify(category)} -->

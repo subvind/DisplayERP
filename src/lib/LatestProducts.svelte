@@ -46,8 +46,12 @@
       <div class="col s12 m6 l4">
         <div class="card hoverable">
           <div class="card-image">
-            <div class="category">
-              <img src="/IMG-1258.jpg" alt="logo">
+            <div class="photo">
+              {#if product.coverPhoto}
+                <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.coverPhoto.bucket.name}/${product.coverPhoto.filename}`} alt="product">
+              {:else}
+                <img src="/IMG-1258.jpg" alt="product">
+              {/if}
             </div>
             {#if product.isArchive === false}
               <span class="card-title black-text">{formatter.format(product.price / 100)}</span>
@@ -74,7 +78,7 @@
     width: 100%;
   }
 
-  .category {
+  .photo {
     /* max-height: 200px; */
     overflow: hidden;
     display: flex;
@@ -82,7 +86,7 @@
     align-items: center; /* Vertically center the image */
   }
 
-  .category img {
+  .photo img {
     width: auto;
     max-width: 100%;
     object-fit: contain; /* This ensures the image maintains its aspect ratio and fits within the container */
