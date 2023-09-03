@@ -7,7 +7,7 @@
 	import './styles.css';
 
 	let organization: any;
-	let hostname: any;
+	let hostname: any = '';
 
 	onMount(async() => {
 		hostname = window.location.hostname
@@ -39,14 +39,18 @@
 		<slot />
 	</main>
 
-	<footer>
-		<p style="margin: 0;">
-  		{hostname} © {new Date().getFullYear()}.
-		</p>
-		<p style="margin: 0;">
-			powered by <a href="https://subvind.com">subvind</a>
-		</p>
-	</footer>
+	{#if organization}
+		<footer>
+			<p style="margin: 0;">
+				{hostname} © {new Date().getFullYear()}.
+			</p>
+			{#if organization.isBranding}
+				<p style="margin: 0;">
+					powered by <a href="https://subvind.com">subvind</a>
+				</p>
+			{/if}
+		</footer>
+	{/if}
 </div>
 
 <style>
