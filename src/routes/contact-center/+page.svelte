@@ -57,7 +57,7 @@
 
 <div class="container">
 	<h1>Contact Center</h1>
-	
+
 	<div class="card">
 		<div class="card-content">
 			<p style="font-size:  1.2em;">
@@ -94,7 +94,7 @@
 				</div>
 			</div>
 			<div class="card-action">
-				<a class="btn red lighten-2" href="#!" on:click={(e) => sendEmail(e)}>Send Message</a>
+				<a class="btn red lighten-2" href="#" on:click={(e) => sendEmail(e)}>Send Message</a>
 			</div>
 		</form>
 	</div>
