@@ -106,7 +106,7 @@
 							{#if organization.orgPhoto}
 								<img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${organization.orgPhoto.bucket.name}/${organization.orgPhoto.filename}`} alt="logo" class="dropdown-trigger" data-target='dropdown1'>
 							{:else}
-								<img src="logo.jpg" alt="logo" class="dropdown-trigger" data-target='dropdown1'>
+								<img src="./logo.jpg" alt="logo" class="dropdown-trigger" data-target='dropdown1'>
 							{/if}
 						{/if}
 					</div>
