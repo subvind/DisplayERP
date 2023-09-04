@@ -44,7 +44,7 @@
 </nav>
 
 <div class="container">
-	<h1>Privacy Policy</h1>
+	<h4>Privacy Policy</h4>
 
 	{#if organization}
 		<p>

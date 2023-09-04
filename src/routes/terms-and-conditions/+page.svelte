@@ -44,7 +44,7 @@
 </nav>
 
 <div class="container">
-	<h1>Terms & Conditions</h1>
+	<h4>Terms & Conditions</h4>
 
 	{#if organization}
 		<p>

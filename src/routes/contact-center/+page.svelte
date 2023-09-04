@@ -56,7 +56,7 @@
 </nav>
 
 <div class="container">
-	<h1>Contact Center</h1>
+	<h4>Contact Center</h4>
 
 	<div class="card">
 		<div class="card-content">
