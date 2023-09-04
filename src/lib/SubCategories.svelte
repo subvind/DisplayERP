@@ -27,7 +27,7 @@
   })
 </script>
 
-{#if categories}
+{#if categories && categories.data.length}
   <h4>BROWSE SUB CATEGORIES</h4>
   <!-- {JSON.stringify(categories)} -->
   <div class="row categories">

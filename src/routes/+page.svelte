@@ -59,8 +59,8 @@
 <div class="container">
   <Slideshow />
   
-  {#if categories}
-    <Categories categories={categories} />
+  {#if categories && organization}
+    <Categories categories={categories} organization={organization} />
   {/if}
   
   {#if organization}

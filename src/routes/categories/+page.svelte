@@ -66,7 +66,7 @@
 </nav>
 
 <div class="container">
-  {#if categories}
-    <Categories categories={categories} />
+  {#if categories && organization}
+    <Categories categories={categories} organization={organization} />
   {/if}
 </div>

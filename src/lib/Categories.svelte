@@ -1,5 +1,6 @@
 <script lang="ts">
   export let categories: any;
+  export let organization: any;
 </script>
 
 <h4>BROWSE BY CATEGORY</h4>
@@ -11,7 +12,11 @@
         <div class="card hoverable">
           <div class="card-image">
             <div class="photo">
-              <img src="/IMG-1258.jpg" alt="category">
+              {#if category.mainPhoto}
+                <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${category.mainPhoto.bucket.name}/${category.mainPhoto.filename}`} alt="category">
+              {:else}
+                <img src="/IMG-1258.jpg" alt="category">
+              {/if}
             </div>
             <!-- <span class="card-title"></span> -->
           </div>
