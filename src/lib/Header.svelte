@@ -49,7 +49,7 @@
 				<nav class="grey darken-3" style="max-height: 64px;">
 					<div class="nav-wrapper">
 						{#if organization}
-							<a href="/" class="brand-logo" style="width: 100%; text-align: center;">{organization.shortName || 'STOREFRONT'}</a>
+							<a href="/" target="_self" class="brand-logo" style="width: 100%; text-align: center;">{organization.shortName || 'STOREFRONT'}</a>
 						{/if}
 					</div>
 				</nav>
@@ -85,15 +85,14 @@
 				<li><div class="divider"></div></li>
 				<li><a class="subheader">Menu</a></li>
 
-				<li><a href="#"><i class="material-icons">home</i>Homepage</a></li>
-				<li class="active"><a href="/"><i class="material-icons">local_grocery_store</i>Shop</a></li>
-				<!-- <li><a href="/about"><i class="material-icons">local_library</i>About</a></li> -->
-				<li><a href="/contact-center"><i class="material-icons">local_phone</i>Contact Center</a></li>
+				<li><a href={organization.homepageLink || '/'} target="_self" class="waves-effect" ><i class="material-icons">home</i>Homepage</a></li>
+				<li><a href={organization.shopLink || '/categories'} target="_self" class="waves-effect"><i class="material-icons">local_grocery_store</i>Shop</a></li>
+				<li><a href="/contact-center" target="_self" class="waves-effect"><i class="material-icons">local_phone</i>Contact Center</a></li>
 				
 				<li><div class="divider"></div></li>
 				<li><a class="subheader">Extra</a></li>
-				<li><a class="waves-effect" href="#">Privacy Policy</a></li>
-				<li><a class="waves-effect" href="#">Terms & Conditions</a></li>
+				<li><a class="waves-effect" href="/privacy-policy" target="_self">Privacy Policy</a></li>
+				<li><a class="waves-effect" href="/terms-and-conditions" target="_self">Terms & Conditions</a></li>
 			</ul>
 			{#if organization}
 				<a href="#" data-target="slide-out" class="brand-logo sidenav-trigger left"><i class="material-icons">menu</i>{organization.displayName}</a>

@@ -1,21 +1,101 @@
+<script lang="ts">
+	import { onMount } from "svelte";
+
+	let organization: any;
+
+  let name = ''
+  let subject = ''
+  let email = ''
+  let message = ''
+
+  function sendEmail(event: any) {
+    event.preventDefault()
+    window.open(`mailto:${organization.contactCenterEmail}?to=${organization.contactCenterEmail}&cc=${email}&subject=${name}: ${subject}&body=${message}`);
+  }
+	
+	onMount(async () => {
+		let hostname = window.location.hostname
+		if (hostname === 'localhost') {
+			hostname = 'store.subvind.com'
+		}
+
+    const responseOrg = await fetch(`https://backend.subvind.com/organizations/hostname/${hostname}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (responseOrg.ok) {
+      organization = await responseOrg.json();
+    } else {
+      const errorData = await responseOrg.json();
+      alert(errorData.error);
+    }
+
+		window['M'].updateTextFields();
+	})
+</script>
+
 <svelte:head>
-	<title>Contact Center</title>
+	{#if organization}
+		<title>Contact Center - {organization.displayName}</title>
+	{/if}
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="text-column">
-	<h1>About this app</h1>
+<nav class="breadcrumbs black">
+  <div class="container">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a href="/" class="breadcrumb">Home</a>
+				<a href="/contact-center" class="breadcrumb">Contact Center</a>
+      </div>
+    </div>
+  </div>
+</nav>
 
-	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
-
-	<pre>npm create svelte@latest</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
+<div class="container">
+	<h1>Contact Center</h1>
+	
+	<div class="card">
+		<div class="card-content">
+			<p style="font-size:  1.2em;">
+				{#if organization}
+					email address: {organization.contactCenterEmail}
+				{:else}
+					loading...
+				{/if}
+			</p>
+		</div>
+		<form>
+			<div class="card-action" style="padding: 1em;">
+				<div class="row">
+					<div class="input-field col s6">
+						<input placeholder="John Smith" id="name" type="text" class="validate" bind:value={name}>
+						<label for="name">Name</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="email" type="email" class="validate" bind:value={email}>
+						<label for="email">Email Address</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input placeholder="" id="subject" type="text" class="validate" bind:value={subject}>
+						<label for="subject">Subject</label>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 0;">
+					<div class="input-field col s12" style="margin-bottom: 0;">
+						<textarea placeholder="" id="message" class="materialize-textarea" bind:value={message}></textarea>
+						<label for="message">Message</label>
+					</div>
+				</div>
+			</div>
+			<div class="card-action">
+				<a class="btn red lighten-2" href="#!" on:click={(e) => sendEmail(e)}>Send Message</a>
+			</div>
+		</form>
+	</div>
 </div>

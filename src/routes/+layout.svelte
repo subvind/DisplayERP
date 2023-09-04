@@ -33,6 +33,11 @@
 <div class="app">
 	{#if organization}
 		<Header organization={organization} />
+	{:else}
+		<nav class="grey darken-3">
+			<div class="nav-wrapper">
+			</div>
+		</nav>
 	{/if}
 
 	<main>
