@@ -1,17 +1,46 @@
 <script lang="ts">
-  export let categories: any;
+  import { onMount } from "svelte";
+
+  export let categoryId: any;
+  export let organization: any;
+  let categories: any;
+
+  onMount(async () => {
+    const response = await fetch(`https://backend.subvind.com/categories/categoryRelated/${categoryId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (response.ok) {
+      categories = await response.json();
+
+      setTimeout(() => {
+        let elms = document.querySelectorAll('.tabs')
+        var instance = M.Tabs.init(elms, {});
+      }, 0)
+    } else {
+      const errorData = await response.json();
+      alert(errorData.error);
+    }
+  })
 </script>
 
-{#if categories.length}
+{#if categories}
   <h4>BROWSE SUB CATEGORIES</h4>
   <!-- {JSON.stringify(categories)} -->
   <div class="row categories">
-    {#each categories as category}
+    {#each categories.data as category}
       <div class="col s6 m3 l3">
         <div class="card hoverable">
           <div class="card-image">
             <div class="photo">
-              <img src="/IMG-1258.jpg" alt="category">
+              {#if category.mainPhoto}
+                <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${category.mainPhoto.bucket.name}/${category.mainPhoto.filename}`} alt="product">
+              {:else}
+                <img src="/IMG-1258.jpg" alt="category">
+              {/if}
             </div>
             <!-- <span class="card-title"></span> -->
           </div>

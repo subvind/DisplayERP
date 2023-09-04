@@ -77,7 +77,7 @@
 
 <div class="container">
   {#if category}
-    <SubCategories categories={category.subCategories} organization={organization} />
+    <SubCategories categoryId={category.id} organization={organization} />
   {/if}
 
   {#if category}
