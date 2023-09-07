@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-  import Slideshow from '$lib/Slideshow.svelte';
+  import Showcase from '$lib/Showcase.svelte';
   import Categories from '$lib/Categories.svelte';
   import LatestProducts from '$lib/LatestProducts.svelte';
 
@@ -57,7 +57,9 @@
 
 <br />
 <div class="container">
-  <Slideshow />
+  {#if organization}
+    <Showcase organization={organization} />
+  {/if}
   
   {#if categories && organization}
     <Categories categories={categories} organization={organization} />
