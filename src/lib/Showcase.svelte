@@ -12,7 +12,7 @@
   }
 
   onMount(async () => {
-    const response = await fetch(`https://backend.subvind.com/showcases/orgRelated/${organization.id}`, {
+    const response = await fetch(`https://api.subvind.com/showcases/orgRelated/${organization.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

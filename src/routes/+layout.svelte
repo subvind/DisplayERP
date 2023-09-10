@@ -14,7 +14,7 @@
 		if (hostname === 'localhost') {
 			hostname = 'store.subvind.com'
 		}
-    const response = await fetch(`https://backend.subvind.com/organizations/hostname/${hostname}`, {
+    const response = await fetch(`https://api.subvind.com/organizations/hostname/${hostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

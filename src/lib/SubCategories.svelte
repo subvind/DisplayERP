@@ -6,7 +6,7 @@
   let categories: any;
 
   onMount(async () => {
-    const response = await fetch(`https://backend.subvind.com/categories/categoryRelated/${categoryId}`, {
+    const response = await fetch(`https://api.subvind.com/categories/categoryRelated/${categoryId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

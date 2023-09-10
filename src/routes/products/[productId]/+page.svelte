@@ -23,7 +23,7 @@
 			hostname = 'store.subvind.com'
 		}
     
-    const responseOrg = await fetch(`https://backend.subvind.com/organizations/hostname/${hostname}`, {
+    const responseOrg = await fetch(`https://api.subvind.com/organizations/hostname/${hostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@
       alert(errorData.error);
     }
 
-    const responseProduct = await fetch(`https://backend.subvind.com/products/sku/${data.productId}/${organization.id}`, {
+    const responseProduct = await fetch(`https://api.subvind.com/products/sku/${data.productId}/${organization.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

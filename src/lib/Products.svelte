@@ -24,7 +24,7 @@
       searchParams = `&search=${search}`
     }
     let typeParams = `&type=${type}`
-    const response = await fetch(`https://backend.subvind.com/products/categoryRelated/${category.id}?limit=${limit}&page=${currentPage}${searchParams}${typeParams}`, {
+    const response = await fetch(`https://api.subvind.com/products/categoryRelated/${category.id}?limit=${limit}&page=${currentPage}${searchParams}${typeParams}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -13,7 +13,7 @@
 		if (hostname === 'localhost') {
 			hostname = 'store.subvind.com'
 		}
-    const response = await fetch(`https://backend.subvind.com/categories/hostname/${hostname}`, {
+    const response = await fetch(`https://api.subvind.com/categories/hostname/${hostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@
       alert(errorData.error);
     }
 
-    const responseOrg = await fetch(`https://backend.subvind.com/organizations/hostname/${hostname}`, {
+    const responseOrg = await fetch(`https://api.subvind.com/organizations/hostname/${hostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

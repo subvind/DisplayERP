@@ -19,7 +19,7 @@
 			hostname = 'store.subvind.com'
 		}
 
-    const responseOrg = await fetch(`https://backend.subvind.com/organizations/hostname/${hostname}`, {
+    const responseOrg = await fetch(`https://api.subvind.com/organizations/hostname/${hostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
