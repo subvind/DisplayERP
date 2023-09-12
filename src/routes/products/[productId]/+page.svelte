@@ -77,7 +77,7 @@
 
 <svelte:head>
   {#if product && organization}
-    <title>{product.name} - {product.category.name} - {organization.displayName}</title> 
+    <title>{product.name} - {product.category?.name || 'Uncategorized'} - {organization.displayName}</title> 
     <meta name="description" content={product.description} />
   {/if}
 </svelte:head>
