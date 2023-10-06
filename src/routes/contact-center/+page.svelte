@@ -33,6 +33,11 @@
       alert(errorData.error);
     }
 
+		// @ts-ignore
+		gtag('event', 'pageview', {
+			'organizationId': organization.id
+		});
+
 		window['M'].updateTextFields();
 	})
 </script>

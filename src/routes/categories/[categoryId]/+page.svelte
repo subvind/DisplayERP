@@ -46,6 +46,12 @@
       const errorData = await response.json();
       alert(errorData.error);
     }
+
+		// @ts-ignore
+		gtag('event', 'pageview', {
+			'organizationId': organization.id,
+      'categoryId': category.id
+		});
 	})
 </script>
 

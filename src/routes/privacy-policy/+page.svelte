@@ -22,6 +22,11 @@
       const errorData = await responseOrg.json();
       alert(errorData.error);
     }
+
+		// @ts-ignore
+		gtag('event', 'pageview', {
+			'organizationId': organization.id
+		});
 	})
 </script>
 

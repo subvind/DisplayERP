@@ -45,6 +45,12 @@
       const errorData = await responseOrg.json();
       alert(errorData.error);
     }
+
+		// Send a custom dimension with an event (e.g., when a pageview occurs)
+		// @ts-ignore
+		gtag('event', 'pageview', {
+			'organizationId': organization.id, // Replace with the actual tenantId
+		});
 	})
 </script>
 

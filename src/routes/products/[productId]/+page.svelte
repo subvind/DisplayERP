@@ -64,6 +64,12 @@
       alert(errorData.error);
     }
 
+		// @ts-ignore
+		gtag('event', 'pageview', {
+			'organizationId': organization.id,
+      'productId': product.id
+		});
+
     setTimeout(() => {
       let lightbox = new PhotoSwipeLightbox({
         gallery: '#' + galleryID,
