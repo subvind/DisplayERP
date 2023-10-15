@@ -18,12 +18,12 @@
       minimumFractionDigits: 2,
     });
 
-		let hostname = window.location.hostname
-		if (hostname === 'localhost') {
-			hostname = 'store.subvind.com'
+		let erpHostname = window.location.hostname
+		if (erpHostname === 'localhost') {
+			erpHostname = 'store.subvind.com'
 		}
     
-    const responseOrg = await fetch(`https://api.subvind.com/organizations/hostname/${hostname}`, {
+    const responseOrg = await fetch(`https://api.subvind.com/organizations/erpHostname/${erpHostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

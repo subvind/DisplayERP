@@ -12,9 +12,9 @@
       minimumFractionDigits: 2,
     });
 
-		let hostname = window.location.hostname
-		if (hostname === 'localhost') {
-			hostname = 'store.subvind.com'
+		let erpHostname = window.location.hostname
+		if (erpHostname === 'localhost') {
+			erpHostname = 'store.subvind.com'
 		}
     const response = await fetch(`https://api.subvind.com/products/latestOrgRelated/${organization.id}`, {
       method: 'GET',

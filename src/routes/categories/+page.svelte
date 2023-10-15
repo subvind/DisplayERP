@@ -7,11 +7,11 @@
   let organization: any;
 
 	onMount(async() => {
-		let hostname = window.location.hostname
-		if (hostname === 'localhost') {
-			hostname = 'store.subvind.com'
+		let erpHostname = window.location.hostname
+		if (erpHostname === 'localhost') {
+			erpHostname = 'store.subvind.com'
 		}
-    const response = await fetch(`https://api.subvind.com/categories/hostname/${hostname}`, {
+    const response = await fetch(`https://api.subvind.com/categories/erpHostname/${erpHostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@
       alert(errorData.error);
     }
 
-    const responseOrg = await fetch(`https://api.subvind.com/organizations/hostname/${hostname}`, {
+    const responseOrg = await fetch(`https://api.subvind.com/organizations/erpHostname/${erpHostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

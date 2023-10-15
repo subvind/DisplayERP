@@ -7,14 +7,14 @@
 	import './styles.css';
 
 	let organization: any;
-	let hostname: any = '';
+	let erpHostname: any = '';
 
 	onMount(async() => {
-		hostname = window.location.hostname
-		if (hostname === 'localhost') {
-			hostname = 'store.subvind.com'
+		erpHostname = window.location.hostname
+		if (erpHostname === 'localhost') {
+			erpHostname = 'store.subvind.com'
 		}
-    const response = await fetch(`https://api.subvind.com/organizations/hostname/${hostname}`, {
+    const response = await fetch(`https://api.subvind.com/organizations/erpHostname/${erpHostname}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@
 	{#if organization}
 		<footer>
 			<p style="margin: 0;">
-				{hostname} © {new Date().getFullYear()}.
+				{erpHostname} © {new Date().getFullYear()}.
 			</p>
 			{#if organization.isBranding}
 				<p style="margin: 0;">
