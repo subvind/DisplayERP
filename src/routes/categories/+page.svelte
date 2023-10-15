@@ -62,9 +62,7 @@
     <div class="nav-wrapper">
       <div class="col s12">
         <a href="/" class="breadcrumb">Home</a>
-        {#if organization}
-          <a href="/categories" class="breadcrumb">{organization.categoriesName}</a>
-        {/if}
+        <a href="/categories" class="breadcrumb">Categories</a>
       </div>
     </div>
   </div>

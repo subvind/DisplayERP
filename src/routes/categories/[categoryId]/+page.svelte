@@ -67,9 +67,7 @@
     <div class="nav-wrapper">
       <div class="col s12">
         <a href="/" class="breadcrumb">Home</a>
-        {#if organization}
-          <a href="/categories" class="breadcrumb">{organization.categoriesName}</a>
-        {/if}
+        <a href="/categories" class="breadcrumb">Categories</a>
         {#if category}
           {#if category.parentCategory}
             <a href={`/categories/${category.parentCategory.slug}`} target="_self" class="breadcrumb">{category.parentCategory.name}</a>

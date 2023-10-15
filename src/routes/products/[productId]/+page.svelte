@@ -93,9 +93,7 @@
     <div class="nav-wrapper">
       <div class="col s12">
         <a href="/" class="breadcrumb">Home</a>
-        {#if organization}
-          <a href="/categories" class="breadcrumb">{organization.categoriesName}</a>
-        {/if}
+        <a href="/categories" class="breadcrumb">Categories</a>
         {#if product && product.category}
           <a href={`/categories/${product.category.slug}`} class="breadcrumb">{product.category.name}</a>
         {/if}
