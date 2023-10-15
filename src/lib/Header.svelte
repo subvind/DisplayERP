@@ -86,7 +86,7 @@
 				<li><a class="subheader">Menu</a></li>
 
 				<li><a href={organization.homepageLink || '/'} target="_self" class="waves-effect" ><i class="material-icons">home</i>Homepage</a></li>
-				<li><a href={organization.shopLink || '/categories'} target="_self" class="waves-effect"><i class="material-icons">local_grocery_store</i>Shop</a></li>
+				<li><a href={'/categories'} target="_self" class="waves-effect"><i class="material-icons">local_grocery_store</i>Shop</a></li>
 				<li><a href="/contact-center" target="_self" class="waves-effect"><i class="material-icons">local_phone</i>Contact Center</a></li>
 				
 				<li><div class="divider"></div></li>
