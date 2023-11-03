@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	import Header from '$lib/Header.svelte';
+  import { HeaderERP } from "subvind-components"
 
 	// custom
 	import './styles.css';
@@ -32,7 +32,7 @@
 
 <div class="app">
 	{#if organization}
-		<Header organization={organization} />
+		<HeaderERP organization={organization} />
 	{:else}
 		<nav class="grey darken-3">
 			<div class="nav-wrapper">
