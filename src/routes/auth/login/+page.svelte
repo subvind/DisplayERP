@@ -26,22 +26,6 @@
   })
 </script>
 
-<div class="container">
-  <br />
-  <br />
-  <AuthAccountLogin organization={organization} />
-</div>
-
-<style>
-  .container {
-    margin: 0 auto;
-    background: #222;
-    padding: 1em;
-    padding-top: 0;
-    color: #ccc;
-    position: relative;
-    border: 3px solid #333;
-    border-top: 0px;
-    border-bottom: 0px;
-  }
-</style>
+<br />
+<br />
+<AuthAccountLogin organization={organization} />
