@@ -103,7 +103,7 @@
                 {#if product.coverPhoto}
                   <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.coverPhoto.bucket.name}/${product.coverPhoto.filename}`} alt="product">
                 {:else}
-                  <img src="/IMG-1258.jpg" alt="product">
+                  <img src="/placeholder.png" alt="product">
                 {/if}
               </div>
               {#if product.isArchive === false}

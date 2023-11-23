@@ -3,7 +3,9 @@
   export let organization: any;
 </script>
 
-<h4>BROWSE BY CATEGORY</h4>
+{#if categories.data.length}
+  <h4>BROWSE BY CATEGORY</h4>
+{/if}
 <!-- {JSON.stringify(categories)} -->
 <div class="row categories">
   {#each categories.data as category}
@@ -15,7 +17,7 @@
               {#if category.mainPhoto}
                 <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${category.mainPhoto.bucket.name}/${category.mainPhoto.filename}`} alt="category">
               {:else}
-                <img src="/IMG-1258.jpg" alt="category">
+                <img src="/placeholder.png" alt="category">
               {/if}
             </div>
             <!-- <span class="card-title"></span> -->

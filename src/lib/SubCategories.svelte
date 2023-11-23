@@ -39,7 +39,7 @@
               {#if category.mainPhoto}
                 <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${category.mainPhoto.bucket.name}/${category.mainPhoto.filename}`} alt="product">
               {:else}
-                <img src="/IMG-1258.jpg" alt="category">
+                <img src="/placeholder.png" alt="category">
               {/if}
             </div>
             <!-- <span class="card-title"></span> -->

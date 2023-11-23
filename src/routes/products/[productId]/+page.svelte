@@ -117,7 +117,7 @@
               {#if product && product.coverPhoto}
                 <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${product.coverPhoto.bucket.name}/${product.coverPhoto.filename}`} alt="">
               {:else}
-                <img src="/IMG-1258.jpg" alt="">
+                <img src="/placeholder.png" alt="">
               {/if}
             </div>
           </div>

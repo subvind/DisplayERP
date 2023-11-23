@@ -45,7 +45,7 @@
             {#if showcase.bannerPhoto}
               <img src={`https://s3.us-east-2.amazonaws.com/${organization.orgname}.${showcase.bannerPhoto.bucket.name}/${showcase.bannerPhoto.filename}`} alt={showcase.title}>
             {:else}
-              <img src="/IMG-1255.jpg" alt={showcase.title}>
+              <img src="/placeholder.png" alt={showcase.title}>
             {/if}
           </div>
         </div>
