@@ -95,8 +95,8 @@
   <!-- {JSON.stringify(categories)} -->
   {#if products.data.length}
     <div class="row categories">
-      {#each products.data as product}
-        <div class="col s12 m6 l4">
+      <div class="col s12 cards-container">
+        {#each products.data as product}
           <div class="card hoverable">
             <div class="card-image">
               <div class="photo">
@@ -121,8 +121,8 @@
               <a href={`/products/${product.stockKeepingUnit}`}>{product.name}</a>
             </div>
           </div>
-        </div>
-      {/each}
+        {/each}
+      </div>
     </div>
     <div class="pagination">
       <li class="disabled">
@@ -178,5 +178,35 @@
     width: auto;
     max-width: 100%;
     object-fit: contain; /* This ensures the image maintains its aspect ratio and fits within the container */
+  }
+
+  .cards-container {
+    column-break-inside: avoid;
+  }
+  .cards-container .card {
+    display: inline-block;
+    overflow: visible;
+  }
+
+  @media only screen and (max-width : 600px) {
+    .cards-container {
+      -webkit-column-count: 1;
+      -moz-column-count: 1;
+      column-count: 1;
+    }
+  }
+  @media only screen and (min-width : 601px) {
+    .cards-container {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+    }
+  }
+  @media only screen and (min-width : 993px) {
+    .cards-container {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+    }
   }
 </style>
