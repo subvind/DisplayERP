@@ -10,7 +10,7 @@
 <div class="row categories">
   {#each categories.data as category}
     {#if !category.parentCategory}
-      <div class="col s6 m3">
+      <div class="col s6 m4 l3">
         <div class="card hoverable">
           <div class="card-image">
             <div class="photo">
