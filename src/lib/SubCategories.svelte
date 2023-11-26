@@ -32,7 +32,7 @@
   <!-- {JSON.stringify(categories)} -->
   <div class="row categories">
     {#each categories.data as category}
-      <div class="col s6 m3 l3">
+      <div class="col s6 m4 l3">
         <div class="card hoverable">
           <div class="card-image">
             <div class="photo">
