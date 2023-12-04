@@ -22,6 +22,6 @@
 	"type": "module",
 	"dependencies": {
 		"photoswipe": "^5.3.8",
-		"subvind-components": "^0.0.15"
+		"subvind-components": "^0.0.20"
 	}
 }
